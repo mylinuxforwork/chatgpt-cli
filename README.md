@@ -1,6 +1,6 @@
 # myChatGpt
 
-
+pip install openai
 
 ## Getting started
 

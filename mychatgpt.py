@@ -1,11 +1,13 @@
 import openai
 
 # Set up the OpenAI API client
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = "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"
 
 # Set up the model and prompt
 model_engine = "text-davinci-003"
-prompt = "Hello, how are you today?"
+
+prompt = str(input("Hello, how can I help you? "))
+print('...')
 
 # Generate a response
 completion = openai.Completion.create(

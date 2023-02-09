@@ -1,4 +1,5 @@
 import openai
+import pyperclip
 
 # Set up the OpenAI API client
 openai.api_key = "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"
@@ -21,3 +22,7 @@ completion = openai.Completion.create(
 
 response = completion.choices[0].text
 print(response)
+
+pyperclip.copy(response)
+print("...")
+print("Output has been copied to the clipboard")

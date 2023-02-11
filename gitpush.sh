@@ -1,5 +1,4 @@
 #!/bin/sh
-#
 
 echo -e "Enter the git commit message: \c "
 read comment

@@ -2,7 +2,7 @@ import openai
 import pyperclip
 
 # Set up the OpenAI API client
-openai.api_key = "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"
+openai.api_key = "YOUR API KEY"
 
 # Set up the model and prompt
 model_engine = "text-davinci-003"

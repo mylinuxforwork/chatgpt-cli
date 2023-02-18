@@ -1,8 +1,27 @@
+# -----------------------------------------------------
+# myChatGpt script
+# modify the path to the openai.yaml
+# -----------------------------------------------------
+
 import openai
 import pyperclip
+import yaml
+from pathlib import Path
+from yaml import load,CLoader as Loader
+
+# Path to your openai.yaml in your home directory
+openaipath = "/private/openai.yaml"
+# openaipath = "/mychatgpt/openai.yaml"
+
+# Get home path
+home = str(Path.home())
+
+# Load openai api key
+with open(home + openaipath, "r") as ymlfile:
+    cfg = yaml.load(ymlfile, Loader=Loader)
 
 # Set up the OpenAI API client
-openai.api_key = "YOUR API KEY"
+openai.api_key = cfg["openai"]["api-key"]
 
 # Set up the model and prompt
 model_engine = "text-davinci-003"

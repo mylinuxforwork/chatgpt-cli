@@ -7,3 +7,5 @@
 pip install openai
 pip install pyperclip
 pip install pyaml
+pip install click
+pip install rich

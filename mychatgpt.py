@@ -4,7 +4,8 @@
 # | |  | | |_| | |___| | | | (_| | |_| |_| | |_) | |_ 
 # |_|  |_|\__, |\____|_| |_|\__,_|\__|\____| .__/ \__|
 #         |___/                            |_|        
-#
+# 
+# by Stephan Raabe (2023)
 # -----------------------------------------------------
 # myChatGpt script
 # modify the path to the openai.yaml
@@ -14,6 +15,8 @@ import openai
 import pyperclip
 import yaml
 import readline
+import click
+
 from pathlib import Path
 from yaml import load,CLoader as Loader
 
@@ -35,32 +38,38 @@ openai.api_key = cfg["openai"]["api-key"]
 # Set up the model and prompt
 model_engine = "text-davinci-003"
 
-prompt = str(input("Hello, how can I help you? "))
-print('...')
+@click.command()
+def sendRequest():
 
-# Generate a response
-completion = openai.Completion.create(
-    engine=model_engine,
-    prompt=prompt,
-    max_tokens=1024,
-    n=1,
-    stop=None,
-    temperature=0.5,
-)
+    prompt = str(input("Hello, how can I help you? "))
+    print('...')
 
-response = completion.choices[0].text
-print(response)
+    # Generate a response
+    completion = openai.Completion.create(
+        engine=model_engine,
+        prompt=prompt,
+        max_tokens=1024,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
 
-pyperclip.copy(response)
-print("...")
-print("Output has been copied to the clipboard!")
+    response = completion.choices[0].text
+    print(response)
 
-c = input("Do you want to store the question and answer in the Chat Logfile (y/n)? (default: y) ")
-if (c != "n"):
-    f = open (home + chat_logfile, "a")
-    f.write("Question: " + prompt)
-    f.write(response + "\n")
-    f.write(" \n")
-    f.close()
-    print("Output written to chat logfile " + chat_logfile + "!")
+    pyperclip.copy(response)
+    print("...")
+    print("Output has been copied to the clipboard!")
+    
+    c = input("Do you want to store the question and answer in the Chat Logfile (y/n)? (default: y) ")
+    if (c != "n"):
+        f = open (home + chat_logfile, "a")
+        f.write("Question: " + prompt)
+        f.write(response + "\n")
+        f.write(" \n")
+        f.close()
+        print("Output written to chat logfile " + chat_logfile + "!")
+
+if __name__ == '__main__':
+    sendRequest()
 

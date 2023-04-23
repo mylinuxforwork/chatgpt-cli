@@ -10,7 +10,7 @@ To make it easy for you to get started, here's a list of recommended next steps.
 # Install the required python packages
 ./1-install.sh
 
-# Copy the openai.yaml to your home directoy and add your openai api key.
+# Copy the openai.yaml to your home directory and add your openai api key to the file.
 vim openai.yaml
 
 # Define the path to openai.yaml

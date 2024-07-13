@@ -1,4 +1,6 @@
-# myChatGpt
+# chatgpt-cli
+
+> IMPORTANT: Please note that the script is currently under development and needs to be updated to the new OpenAI API.
 
 Easy to use script to send request to the openai chatgpt api.
 
